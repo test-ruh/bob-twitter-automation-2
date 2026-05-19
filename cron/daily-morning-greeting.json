@@ -1,0 +1,16 @@
+{
+  "name": "daily-morning-greeting",
+  "enabled": true,
+  "schedule": {
+    "kind": "cron",
+    "expr": "30 4 * * *",
+    "tz": "UTC"
+  },
+  "sessionTarget": "main",
+  "wakeMode": "schedule",
+  "payload": {
+    "kind": "agentTurn",
+    "message": "Good morning People",
+    "timeoutSeconds": 600
+  }
+}

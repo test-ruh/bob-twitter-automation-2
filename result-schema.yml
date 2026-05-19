@@ -1,0 +1,56 @@
+version: "1.0"
+agent_id: bob
+
+tables:
+  result_scheduled_run:
+    description: "Minimal run log for bob's scheduled Twitter/X posting attempts."
+    writable: true
+    write_mode: upsert
+    columns:
+      id:
+        type: uuid
+        primary_key: true
+        auto_generate: true
+        description: Unique run log record ID.
+      run_id:
+        type: string
+        description: Platform workflow run identifier.
+      computed_at:
+        type: datetime
+        description: Timestamp when the result row was written.
+      scheduled_at:
+        type: datetime
+        required: true
+        description: Scheduled execution time.
+      started_at:
+        type: datetime
+        required: true
+        description: Actual run start time.
+      completed_at:
+        type: datetime
+        description: Run completion time.
+      status:
+        type: string
+        required: true
+        description: Scheduled run status.
+      twitter_post_id:
+        type: string
+        description: Twitter/X post ID if available.
+      error_message:
+        type: text
+        description: Failure details visible in the dashboard.
+      created_at:
+        type: datetime
+        required: true
+        description: Record creation timestamp.
+      updated_at:
+        type: datetime
+        required: true
+        description: Record update timestamp.
+    conflict_columns:
+      - scheduled_at
+    indexes:
+      - columns: [scheduled_at]
+        name: idx_result_scheduled_run_scheduled_at
+      - columns: [status]
+        name: idx_result_scheduled_run_status

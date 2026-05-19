@@ -1,0 +1,41 @@
+infrastructure:
+  - key: PG_CONNECTION_STRING
+    label: PostgreSQL connection string
+    required: false
+    secret: true
+    platform_managed: true
+    description: "Platform-managed database connection used to store bob's run log."
+  - key: ORG_ID
+    label: Organization ID
+    required: false
+    secret: false
+    platform_managed: true
+    description: "Platform-managed organization identifier."
+  - key: AGENT_ID
+    label: Agent ID
+    required: false
+    secret: false
+    platform_managed: true
+    description: "Platform-managed agent identifier."
+  - key: RUN_ID
+    label: Run ID
+    required: false
+    secret: false
+    platform_managed: true
+    description: "Platform-managed identifier for each workflow run."
+connector:
+  - key: TWITTER_X_API_CREDENTIAL
+    label: Twitter/X API credential
+    required: true
+    secret: true
+    platform_managed: false
+    description: Twitter/X account credential with permission to create the daily public post.
+    how_to_get_steps:
+      - "Open https://developer.x.com in your browser"
+      - Sign in with the Twitter/X account that should publish the greeting
+      - Open the developer portal or project that has posting access
+      - Create or select app credentials with permission to create posts
+      - Copy the credential value and paste it into the field above.
+    site_url: "https://x.com"
+    provider_doc_url: "https://developer.x.com/en/docs"
+channel: []

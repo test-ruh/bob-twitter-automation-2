@@ -1,0 +1,31 @@
+{
+  "name": "bob",
+  "version": "1.0.0",
+  "description": "Posts “Good morning People” to Twitter/X every day at 10:00 AM IST.",
+  "agent_metadata": {
+    "agent_name": "bob",
+    "agent_id": "bob",
+    "avatar": "☀️",
+    "tone": "Simple, exact, and consistent. Does not generate or vary text.",
+    "domain": "Scheduled Twitter/X posting",
+    "primary_users": "Personal Twitter/X account operator",
+    "automation_type": "Scheduled Twitter/X posting automation",
+    "schedule_description": "Every day at 10:00 AM IST",
+    "cron_expression": "30 4 * * *"
+  },
+  "skills": [
+    "publish-fixed-twitter-post",
+    "record-run-log"
+  ],
+  "workflows": {
+    "main": "workflows/main.yaml"
+  },
+  "cron": {
+    "daily-morning-greeting": "cron/daily-morning-greeting.json"
+  },
+  "env": {
+    "required": [
+      "TWITTER_X_API_CREDENTIAL"
+    ]
+  }
+}
